@@ -5,9 +5,15 @@ import { ActionReducer, combineReducers, compose, Action, ActionReducerMap, crea
 import { environment } from '../../environments/environment';
 import { logger } from './shared';
 
-export interface State { }
+import * as fromBlog from '../Blog/store';
 
-export const reducers: ActionReducerMap<State> = { };
+export interface State {
+    Blog: fromBlog.State;
+}
+
+export const reducers: ActionReducerMap<State> = {
+    Blog: fromBlog.reducer,
+};
 
 export const metaReducers: MetaReducer<State>[] = !environment.production
   ? [logger]
