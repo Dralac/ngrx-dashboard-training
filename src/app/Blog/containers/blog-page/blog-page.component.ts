@@ -10,6 +10,8 @@ import { BlogService } from '../../services';
 })
 export class BlogPageComponent implements OnInit {
 
+    posts$ = this.blogService.posts$;
+
     constructor(private blogService: BlogService) { }
 
     ngOnInit() {
