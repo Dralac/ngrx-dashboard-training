@@ -28,3 +28,9 @@ export interface PostComment {
     downvotes: number;
     date: string;
 }
+
+// Normalized
+
+export type PostEntities = { [postId: string]: Post };
+export type UserEntities = { [userId: string]: User };
+export type PostCommentEntities = { [commentId: string]: PostComment };
