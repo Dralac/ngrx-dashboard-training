@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppStoreModule } from './Store';
 
+// features
+import { BlogModule } from './Blog';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -11,7 +14,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppStoreModule
+    AppStoreModule,
+    BlogModule
   ],
   bootstrap: [AppComponent]
 })
