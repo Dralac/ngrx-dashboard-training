@@ -8,7 +8,7 @@ import { reducers, metaReducers } from './reducer';
   imports: [
     // StoreModule.provideStore(reducer)
     StoreModule.forRoot(reducers, { metaReducers }),
-    // new
+    // not needed on dash currently
     EffectsModule.forRoot([]),
   ]
 })

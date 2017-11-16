@@ -3,13 +3,14 @@
 import { ActionReducer, combineReducers, compose, Action, ActionReducerMap, createSelector, MetaReducer } from '@ngrx/store';
 
 import { environment } from '../../environments/environment';
+import { logger } from './shared';
 
 export interface State { }
 
 export const reducers: ActionReducerMap<State> = { };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? []
+  ? [logger]
   : [];
 
 
