@@ -22,8 +22,6 @@ const getPostsArray = createSelector(
 );
 
 
-// Summary implementation
-
 // calculate some data
 export type PostSummary = Pick<models.Post, 'title' | 'text' | 'guid'> & { fullName: string };
 
@@ -39,3 +37,46 @@ export const getPostsArraySummary = createSelector(
     })
 );
 
+
+
+
+
+
+
+
+
+// if we need to use a denormalized version
+export const getPostsDenormalized = createSelector(
+    getPostsArray,
+    getComments,
+    getUsers,
+    (posts, comments, users) =>
+        posts.map(post => ({
+            ...post,
+            comments: post.comments.map(comment => comments[comment]),
+            user: users[post.user]
+        }))
+);
+
+
+
+
+
+
+
+
+
+
+
+
+// curried function example
+export const singlePostComments = (posts: models.PostEntities, comments: models.PostCommentEntities) =>
+    (postId: string) => posts[postId]
+        ? posts[postId].comments.map(comment => comments[comment])
+        : [];
+
+export const getSinglePostComments = createSelector(
+    getPosts,
+    getComments,
+    singlePostComments
+);
