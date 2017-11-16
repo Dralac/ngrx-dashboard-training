@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppStoreModule,
-    BlogModule
+    BlogModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })

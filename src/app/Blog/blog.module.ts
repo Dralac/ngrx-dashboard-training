@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { SharedModule } from '../shared';
 
-import { BlogListComponent, BlogPostComponent, BlogCommentComponent } from './components';
+import { BlogApiService } from './api';
+
+import { BlogListComponent, BlogPostComponent } from './components';
 
 @NgModule({
     imports: [
@@ -12,10 +14,16 @@ import { BlogListComponent, BlogPostComponent, BlogCommentComponent } from './co
 
         // components
         BlogListComponent,
-        BlogPostComponent,
-        BlogCommentComponent
+        BlogPostComponent
     ],
     exports: [],
     providers: []
 })
-export class BlogModule { }
+export class BlogModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: BlogModule,
+            providers: [BlogApiService]
+        };
+    }
+}
