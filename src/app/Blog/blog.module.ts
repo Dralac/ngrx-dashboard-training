@@ -1,5 +1,9 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
+
 import { SharedModule } from '../shared';
+
+import { BlogEffects } from './store';
 
 import { BlogApiService } from './api';
 
@@ -7,7 +11,8 @@ import { BlogListComponent, BlogPostComponent } from './components';
 
 @NgModule({
     imports: [
-        SharedModule.forChild()
+        SharedModule.forChild(),
+        EffectsModule.forFeature([BlogEffects])
     ],
     declarations: [
         // containers
